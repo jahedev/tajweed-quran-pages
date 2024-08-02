@@ -1,0 +1,68 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  overflow: hidden; /* Ensure no scrolling */
+}
+
+.image-reader {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.page-image {
+  margin: 10px;
+  border: 1px solid #000;
+  box-sizing: border-box;
+  max-width: 50%;
+  max-height: 100%;
+  object-fit: contain;
+  flex: 1;
+}
+
+#left-page {
+  object-position: right;
+}
+
+#right-page {
+ object-position: left;
+}
+
+.controls {
+  width: 100%;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+}
+
+button {
+  flex: 1;
+  padding: 15px 0;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #333;
+  color: #fff;
+}
