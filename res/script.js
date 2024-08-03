@@ -14,7 +14,7 @@ const pageNumber = document.getElementById("page-number");
 
 function renderPage(pageNum, imgElement) {
   const pageIndex = String(pageNum).padStart(3, "0");
-  imgElement.src = `./hafs/tajweed-${pageIndex}.jpg`;
+  imgElement.src = `./${mushaf}/tajweed-${pageIndex}.jpg`;
 }
 
 function queueRenderPage() {

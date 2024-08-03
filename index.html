@@ -1,140 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tajweed Quran</title>
-    <link rel="stylesheet" href="res/styles.css" />
-  </head>
-  <body>
+    <link rel="stylesheet" href="res/styles.css">
+</head>
+<body>
     <div class="image-reader">
-      <div id="image-container" class="image-container">
-        <img id="left-page" class="page-image" />
-        <img id="right-page" class="page-image" />
-      </div>
-      <div class="controls">
-        <button id="next-page" class="nav-button">&lt&lt Next</button>
-        <button id="prev-page" class="nav-button">Previous &gt&gt</button>
-        <button id="single-page" class="nav-button">Single</button>
-        <select id="surah-select" name="surah-select">
-          <option data-page-number="1" value="surah-1">Al-Fatihah (The Opening)</option>
-          <option data-page-number="2" value="surah-2">Al-Baqarah (The Cow)</option>
-          <option data-page-number="50" value="surah-3">Al-Imran (The Family of Imran)</option>
-          <option data-page-number="77" value="surah-4">An-Nisa (The Women)</option>
-          <option data-page-number="106" value="surah-5">Al-Ma'idah (The Table Spread)</option>
-          <option data-page-number="128" value="surah-6">Al-An'am (The Cattle)</option>
-          <option data-page-number="151" value="surah-7">Al-A'raf (The Heights)</option>
-          <option data-page-number="177" value="surah-8">Al-Anfal (The Spoils of War)</option>
-          <option data-page-number="187" value="surah-9">At-Tawbah (The Repentance)</option>
-          <option data-page-number="208" value="surah-10">Yunus (Jonah)</option>
-          <option data-page-number="221" value="surah-11">Hud (Hud)</option>
-          <option data-page-number="235" value="surah-12">Yusuf (Joseph)</option>
-          <option data-page-number="249" value="surah-13">Ar-Ra'd (The Thunder)</option>
-          <option data-page-number="255" value="surah-14">Ibrahim (Abraham)</option>
-          <option data-page-number="262" value="surah-15">Al-Hijr (The Rocky Tract)</option>
-          <option data-page-number="267" value="surah-16">An-Nahl (The Bee)</option>
-          <option data-page-number="282" value="surah-17">Al-Isra (The Night Journey)</option>
-          <option data-page-number="293" value="surah-18">Al-Kahf (The Cave)</option>
-          <option data-page-number="305" value="surah-19">Maryam (Mary)</option>
-          <option data-page-number="312" value="surah-20">Ta-Ha (Ta-Ha)</option>
-          <option data-page-number="322" value="surah-21">Al-Anbiya (The Prophets)</option>
-          <option data-page-number="332" value="surah-22">Al-Hajj (The Pilgrimage)</option>
-          <option data-page-number="342" value="surah-23">Al-Mu'minun (The Believers)</option>
-          <option data-page-number="350" value="surah-24">An-Nur (The Light)</option>
-          <option data-page-number="359" value="surah-25">Al-Furqan (The Criterion)</option>
-          <option data-page-number="367" value="surah-26">Ash-Shu'ara (The Poets)</option>
-          <option data-page-number="377" value="surah-27">An-Naml (The Ant)</option>
-          <option data-page-number="385" value="surah-28">Al-Qasas (The Stories)</option>
-          <option data-page-number="396" value="surah-29">Al-Ankabut (The Spider)</option>
-          <option data-page-number="404" value="surah-30">Ar-Rum (The Romans)</option>
-          <option data-page-number="411" value="surah-31">Luqman (Luqman)</option>
-          <option data-page-number="415" value="surah-32">As-Sajda (The Prostration)</option>
-          <option data-page-number="418" value="surah-33">Al-Ahzab (The Combined Forces)</option>
-          <option data-page-number="428" value="surah-34">Saba (Sheba)</option>
-          <option data-page-number="434" value="surah-35">Fatir (The Originator)</option>
-          <option data-page-number="440" value="surah-36">Ya-Sin (Ya-Sin)</option>
-          <option data-page-number="446" value="surah-37">As-Saffat (Those who set the Ranks)</option>
-          <option data-page-number="453" value="surah-38">Sad (The Letter Sad)</option>
-          <option data-page-number="458" value="surah-39">Az-Zumar (The Troops)</option>
-          <option data-page-number="467" value="surah-40">Ghafir (The Forgiver)</option>
-          <option data-page-number="477" value="surah-41">Fussilat (Explained in Detail)</option>
-          <option data-page-number="483" value="surah-42">Ash-Shura (The Consultation)</option>
-          <option data-page-number="489" value="surah-43">Az-Zukhruf (The Gold Adornments)</option>
-          <option data-page-number="496" value="surah-44">Ad-Dukhan (The Smoke)</option>
-          <option data-page-number="499" value="surah-45">Al-Jathiyah (The Crouching)</option>
-          <option data-page-number="502" value="surah-46">Al-Ahqaf (The Wind-Curved Sandhills)</option>
-          <option data-page-number="507" value="surah-47">Muhammad (Muhammad)</option>
-          <option data-page-number="511" value="surah-48">Al-Fath (The Victory)</option>
-          <option data-page-number="515" value="surah-49">Al-Hujurat (The Rooms)</option>
-          <option data-page-number="518" value="surah-50">Qaf (The Letter Qaf)</option>
-          <option data-page-number="520" value="surah-51">Adh-Dhariyat (The Winnowing Winds)</option>
-          <option data-page-number="523" value="surah-52">At-Tur (The Mount)</option>
-          <option data-page-number="526" value="surah-53">An-Najm (The Star)</option>
-          <option data-page-number="528" value="surah-54">Al-Qamar (The Moon)</option>
-          <option data-page-number="531" value="surah-55">Ar-Rahman (The Beneficent)</option>
-          <option data-page-number="534" value="surah-56">Al-Waqi'a (The Inevitable)</option>
-          <option data-page-number="537" value="surah-57">Al-Hadid (The Iron)</option>
-          <option data-page-number="542" value="surah-58">Al-Mujadila (The Pleading Woman)</option>
-          <option data-page-number="545" value="surah-59">Al-Hashr (The Exile)</option>
-          <option data-page-number="549" value="surah-60">Al-Mumtahina (The Examined)</option>
-          <option data-page-number="551" value="surah-61">As-Saff (The Ranks)</option>
-          <option data-page-number="553" value="surah-62">Al-Jumu'a (The Congregation)</option>
-          <option data-page-number="554" value="surah-63">Al-Munafiqun (The Hypocrites)</option>
-          <option data-page-number="556" value="surah-64">At-Taghabun (The Mutual Disillusion)</option>
-          <option data-page-number="558" value="surah-65">At-Talaq (The Divorce)</option>
-          <option data-page-number="560" value="surah-66">At-Tahrim (The Prohibition)</option>
-          <option data-page-number="562" value="surah-67">Al-Mulk (The Sovereignty)</option>
-          <option data-page-number="564" value="surah-68">Al-Qalam (The Pen)</option>
-          <option data-page-number="566" value="surah-69">Al-Haqqah (The Reality)</option>
-          <option data-page-number="568" value="surah-70">Al-Ma'arij (The Ascending Stairways)</option>
-          <option data-page-number="570" value="surah-71">Nuh (Noah)</option>
-          <option data-page-number="572" value="surah-72">Al-Jinn (The Jinn)</option>
-          <option data-page-number="574" value="surah-73">Al-Muzzammil (The Enshrouded One)</option>
-          <option data-page-number="575" value="surah-74">Al-Muddathir (The Cloaked One)</option>
-          <option data-page-number="577" value="surah-75">Al-Qiyama (The Resurrection)</option>
-          <option data-page-number="578" value="surah-76">Al-Insan (Man)</option>
-          <option data-page-number="580" value="surah-77">Al-Mursalat (The Emissaries)</option>
-          <option data-page-number="582" value="surah-78">An-Naba (The Tidings)</option>
-          <option data-page-number="583" value="surah-79">An-Nazi'at (Those who drag forth)</option>
-          <option data-page-number="585" value="surah-80">Abasa (He frowned)</option>
-          <option data-page-number="586" value="surah-81">At-Takwir (The Overthrowing)</option>
-          <option data-page-number="587" value="surah-82">Al-Infitar (The Cleaving)</option>
-          <option data-page-number="588" value="surah-83">Al-Mutaffifin (Defrauding)</option>
-          <option data-page-number="590" value="surah-84">Al-Inshiqaq (The Splitting Open)</option>
-          <option data-page-number="591" value="surah-85">Al-Buruj (The Mansions of the Stars)</option>
-          <option data-page-number="592" value="surah-86">At-Tariq (The Morning Star)</option>
-          <option data-page-number="593" value="surah-87">Al-Ala (The Most High)</option>
-          <option data-page-number="594" value="surah-88">Al-Ghashiya (The Overwhelming)</option>
-          <option data-page-number="595" value="surah-89">Al-Fajr (The Dawn)</option>
-          <option data-page-number="596" value="surah-90">Al-Balad (The City)</option>
-          <option data-page-number="597" value="surah-91">Ash-Shams (The Sun)</option>
-          <option data-page-number="597" value="surah-92">Al-Lail (The Night)</option>
-          <option data-page-number="598" value="surah-93">Ad-Duha (The Morning Hours)</option>
-          <option data-page-number="598" value="surah-94">Ash-Sharh (The Relief)</option>
-          <option data-page-number="599" value="surah-95">At-Tin (The Fig)</option>
-          <option data-page-number="599" value="surah-96">Al-Alaq (The Clot)</option>
-          <option data-page-number="600" value="surah-97">Al-Qadr (The Power)</option>
-          <option data-page-number="600" value="surah-98">Al-Bayyina (The Clear Proof)</option>
-          <option data-page-number="601" value="surah-99">Az-Zalzala (The Earthquake)</option>
-          <option data-page-number="601" value="surah-100">Al-Adiyat (The Courser)</option>
-          <option data-page-number="601" value="surah-101">Al-Qaria (The Calamity)</option>
-          <option data-page-number="602" value="surah-102">At-Takathur (Rivalry for Increase)</option>
-          <option data-page-number="602" value="surah-103">Al-Asr (The Declining Day)</option>
-          <option data-page-number="602" value="surah-104">Al-Humaza (The Traducer)</option>
-          <option data-page-number="602" value="surah-105">Al-Fil (The Elephant)</option>
-          <option data-page-number="603" value="surah-106">Quraish (Quraish)</option>
-          <option data-page-number="603" value="surah-107">Al-Ma'un (The Small Kindnesses)</option>
-          <option data-page-number="603" value="surah-108">Al-Kawthar (The Abundance)</option>
-          <option data-page-number="603" value="surah-109">Al-Kafirun (The Disbelievers)</option>
-          <option data-page-number="604" value="surah-110">An-Nasr (The Divine Support)</option>
-          <option data-page-number="604" value="surah-111">Al-Masad (The Palm Fiber)</option>
-          <option data-page-number="604" value="surah-112">Al-Ikhlas (The Sincerity)</option>
-          <option data-page-number="604" value="surah-113">Al-Falaq (The Daybreak)</option>
-          <option data-page-number="604" value="surah-114">An-Nas (The Mankind)</option>
+        <div id="image-container" class="image-container">
+            <img id="left-page" class="page-image" />
+            <img id="right-page" class="page-image" />
+        </div>
+        <div class="controls">
+          <button id="next-page" class="nav-button">&lt&lt Next</button>
+          <button id="prev-page" class="nav-button">Previous &gt&gt</button>
+          <button id="single-page" class="nav-button">Single</button>
+          <select id="surah-select" name="surah-select">
+            <option data-page-number="1" value="surah-1">Al-Fatihah (The Opening)</option>
+            <option data-page-number="2" value="surah-2">Al-Baqarah (The Cow)</option>
+            <option data-page-number="50" value="surah-3">Al-Imran (The Family of Imran)</option>
+            <option data-page-number="77" value="surah-4">An-Nisa (The Women)</option>
+            <option data-page-number="106" value="surah-5">Al-Ma'idah (The Table Spread)</option>
+            <option data-page-number="128" value="surah-6">Al-An'am (The Cattle)</option>
+            <option data-page-number="151" value="surah-7">Al-A'raf (The Heights)</option>
+            <option data-page-number="177" value="surah-8">Al-Anfal (The Spoils of War)</option>
+            <option data-page-number="187" value="surah-9">At-Tawbah (The Repentance)</option>
+            <option data-page-number="208" value="surah-10">Yunus (Jonah)</option>
+            <option data-page-number="221" value="surah-11">Hud (Hud)</option>
+            <option data-page-number="235" value="surah-12">Yusuf (Joseph)</option>
+            <option data-page-number="249" value="surah-13">Ar-Ra'd (The Thunder)</option>
+            <option data-page-number="255" value="surah-14">Ibrahim (Abraham)</option>
+            <option data-page-number="262" value="surah-15">Al-Hijr (The Rocky Tract)</option>
+            <option data-page-number="267" value="surah-16">An-Nahl (The Bee)</option>
+            <option data-page-number="282" value="surah-17">Al-Isra (The Night Journey)</option>
+            <option data-page-number="293" value="surah-18">Al-Kahf (The Cave)</option>
+            <option data-page-number="305" value="surah-19">Maryam (Mary)</option>
+            <option data-page-number="312" value="surah-20">Ta-Ha (Ta-Ha)</option>
+            <option data-page-number="322" value="surah-21">Al-Anbiya (The Prophets)</option>
+            <option data-page-number="332" value="surah-22">Al-Hajj (The Pilgrimage)</option>
+            <option data-page-number="342" value="surah-23">Al-Mu'minun (The Believers)</option>
+            <option data-page-number="350" value="surah-24">An-Nur (The Light)</option>
+            <option data-page-number="359" value="surah-25">Al-Furqan (The Criterion)</option>
+            <option data-page-number="367" value="surah-26">Ash-Shu'ara (The Poets)</option>
+            <option data-page-number="377" value="surah-27">An-Naml (The Ant)</option>
+            <option data-page-number="385" value="surah-28">Al-Qasas (The Stories)</option>
+            <option data-page-number="396" value="surah-29">Al-Ankabut (The Spider)</option>
+            <option data-page-number="404" value="surah-30">Ar-Rum (The Romans)</option>
+            <option data-page-number="411" value="surah-31">Luqman (Luqman)</option>
+            <option data-page-number="415" value="surah-32">As-Sajda (The Prostration)</option>
+            <option data-page-number="418" value="surah-33">Al-Ahzab (The Combined Forces)</option>
+            <option data-page-number="428" value="surah-34">Saba (Sheba)</option>
+            <option data-page-number="434" value="surah-35">Fatir (The Originator)</option>
+            <option data-page-number="440" value="surah-36">Ya-Sin (Ya-Sin)</option>
+            <option data-page-number="446" value="surah-37">As-Saffat (Those who set the Ranks)</option>
+            <option data-page-number="453" value="surah-38">Sad (The Letter Sad)</option>
+            <option data-page-number="458" value="surah-39">Az-Zumar (The Troops)</option>
+            <option data-page-number="467" value="surah-40">Ghafir (The Forgiver)</option>
+            <option data-page-number="477" value="surah-41">Fussilat (Explained in Detail)</option>
+            <option data-page-number="483" value="surah-42">Ash-Shura (The Consultation)</option>
+            <option data-page-number="489" value="surah-43">Az-Zukhruf (The Gold Adornments)</option>
+            <option data-page-number="496" value="surah-44">Ad-Dukhan (The Smoke)</option>
+            <option data-page-number="499" value="surah-45">Al-Jathiyah (The Crouching)</option>
+            <option data-page-number="502" value="surah-46">Al-Ahqaf (The Wind-Curved Sandhills)</option>
+            <option data-page-number="507" value="surah-47">Muhammad (Muhammad)</option>
+            <option data-page-number="511" value="surah-48">Al-Fath (The Victory)</option>
+            <option data-page-number="515" value="surah-49">Al-Hujurat (The Rooms)</option>
+            <option data-page-number="518" value="surah-50">Qaf (The Letter Qaf)</option>
+            <option data-page-number="520" value="surah-51">Adh-Dhariyat (The Winnowing Winds)</option>
+            <option data-page-number="523" value="surah-52">At-Tur (The Mount)</option>
+            <option data-page-number="526" value="surah-53">An-Najm (The Star)</option>
+            <option data-page-number="528" value="surah-54">Al-Qamar (The Moon)</option>
+            <option data-page-number="531" value="surah-55">Ar-Rahman (The Beneficent)</option>
+            <option data-page-number="534" value="surah-56">Al-Waqi'a (The Inevitable)</option>
+            <option data-page-number="537" value="surah-57">Al-Hadid (The Iron)</option>
+            <option data-page-number="542" value="surah-58">Al-Mujadila (The Pleading Woman)</option>
+            <option data-page-number="545" value="surah-59">Al-Hashr (The Exile)</option>
+            <option data-page-number="549" value="surah-60">Al-Mumtahina (The Examined)</option>
+            <option data-page-number="551" value="surah-61">As-Saff (The Ranks)</option>
+            <option data-page-number="553" value="surah-62">Al-Jumu'a (The Congregation)</option>
+            <option data-page-number="554" value="surah-63">Al-Munafiqun (The Hypocrites)</option>
+            <option data-page-number="556" value="surah-64">At-Taghabun (The Mutual Disillusion)</option>
+            <option data-page-number="558" value="surah-65">At-Talaq (The Divorce)</option>
+            <option data-page-number="560" value="surah-66">At-Tahrim (The Prohibition)</option>
+            <option data-page-number="562" value="surah-67">Al-Mulk (The Sovereignty)</option>
+            <option data-page-number="564" value="surah-68">Al-Qalam (The Pen)</option>
+            <option data-page-number="566" value="surah-69">Al-Haqqah (The Reality)</option>
+            <option data-page-number="568" value="surah-70">Al-Ma'arij (The Ascending Stairways)</option>
+            <option data-page-number="570" value="surah-71">Nuh (Noah)</option>
+            <option data-page-number="572" value="surah-72">Al-Jinn (The Jinn)</option>
+            <option data-page-number="574" value="surah-73">Al-Muzzammil (The Enshrouded One)</option>
+            <option data-page-number="575" value="surah-74">Al-Muddathir (The Cloaked One)</option>
+            <option data-page-number="577" value="surah-75">Al-Qiyama (The Resurrection)</option>
+            <option data-page-number="578" value="surah-76">Al-Insan (Man)</option>
+            <option data-page-number="580" value="surah-77">Al-Mursalat (The Emissaries)</option>
+            <option data-page-number="582" value="surah-78">An-Naba (The Tidings)</option>
+            <option data-page-number="583" value="surah-79">An-Nazi'at (Those who drag forth)</option>
+            <option data-page-number="585" value="surah-80">Abasa (He frowned)</option>
+            <option data-page-number="586" value="surah-81">At-Takwir (The Overthrowing)</option>
+            <option data-page-number="587" value="surah-82">Al-Infitar (The Cleaving)</option>
+            <option data-page-number="588" value="surah-83">Al-Mutaffifin (Defrauding)</option>
+            <option data-page-number="590" value="surah-84">Al-Inshiqaq (The Splitting Open)</option>
+            <option data-page-number="591" value="surah-85">Al-Buruj (The Mansions of the Stars)</option>
+            <option data-page-number="592" value="surah-86">At-Tariq (The Morning Star)</option>
+            <option data-page-number="593" value="surah-87">Al-Ala (The Most High)</option>
+            <option data-page-number="594" value="surah-88">Al-Ghashiya (The Overwhelming)</option>
+            <option data-page-number="595" value="surah-89">Al-Fajr (The Dawn)</option>
+            <option data-page-number="596" value="surah-90">Al-Balad (The City)</option>
+            <option data-page-number="597" value="surah-91">Ash-Shams (The Sun)</option>
+            <option data-page-number="597" value="surah-92">Al-Lail (The Night)</option>
+            <option data-page-number="598" value="surah-93">Ad-Duha (The Morning Hours)</option>
+            <option data-page-number="598" value="surah-94">Ash-Sharh (The Relief)</option>
+            <option data-page-number="599" value="surah-95">At-Tin (The Fig)</option>
+            <option data-page-number="599" value="surah-96">Al-Alaq (The Clot)</option>
+            <option data-page-number="600" value="surah-97">Al-Qadr (The Power)</option>
+            <option data-page-number="600" value="surah-98">Al-Bayyina (The Clear Proof)</option>
+            <option data-page-number="601" value="surah-99">Az-Zalzala (The Earthquake)</option>
+            <option data-page-number="601" value="surah-100">Al-Adiyat (The Courser)</option>
+            <option data-page-number="601" value="surah-101">Al-Qaria (The Calamity)</option>
+            <option data-page-number="602" value="surah-102">At-Takathur (Rivalry for Increase)</option>
+            <option data-page-number="602" value="surah-103">Al-Asr (The Declining Day)</option>
+            <option data-page-number="602" value="surah-104">Al-Humaza (The Traducer)</option>
+            <option data-page-number="602" value="surah-105">Al-Fil (The Elephant)</option>
+            <option data-page-number="603" value="surah-106">Quraish (Quraish)</option>
+            <option data-page-number="603" value="surah-107">Al-Ma'un (The Small Kindnesses)</option>
+            <option data-page-number="603" value="surah-108">Al-Kawthar (The Abundance)</option>
+            <option data-page-number="603" value="surah-109">Al-Kafirun (The Disbelievers)</option>
+            <option data-page-number="604" value="surah-110">An-Nasr (The Divine Support)</option>
+            <option data-page-number="604" value="surah-111">Al-Masad (The Palm Fiber)</option>
+            <option data-page-number="604" value="surah-112">Al-Ikhlas (The Sincerity)</option>
+            <option data-page-number="604" value="surah-113">Al-Falaq (The Daybreak)</option>
+            <option data-page-number="604" value="surah-114">An-Nas (The Mankind)</option>
           </select>
-        <input id="page-number" type="number" placeholder="1-604" value="1" />
-      </div>
+          <input id="page-number" type="number" placeholder="1-604" value="1">
     </div>
-    <script src="res/script.js"></script>
-  </body>
+</div>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const mushaf = urlParams.get('mushaf') || "hafs";
+    console.log(mushaf);
+</script>
+<script src="res/script.js"></script>
+</body>
 </html>
