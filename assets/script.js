@@ -1,5 +1,17 @@
 "use strict";
 
+// PWA
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/assets/service-worker.js').then(function(registration) {
+        console.log('Service Worker registered with scope:', registration.scope);
+      }, function(error) {
+        console.log('Service Worker registration failed:', error);
+      });
+    });
+  }
+  
+
 document.addEventListener("DOMContentLoaded", () => {
     let displaySinglePage = false;
     const leftPageTag = `<img id="left-page" class="page-image" src="" />`;
@@ -12,9 +24,44 @@ document.addEventListener("DOMContentLoaded", () => {
     const surahSelect = document.getElementById('surah-select');
     const pageNumber = document.getElementById("page-number");
 
-    const renderPage = (pageNum, imgElement) => {
+    const cacheName = 'page-images-cache';
+
+    const getCachedOrDownloadImage = async (imageUrl) => {
+        // Open the cache
+        const cache = await caches.open(cacheName);
+
+        // Check if the image is already in the cache
+        const cachedResponse = await cache.match(imageUrl);
+        if (cachedResponse) {
+            // If image is in the cache, return the cached response
+            return cachedResponse.url;
+        } else {
+            // If not in the cache, fetch it from the network
+            const response = await fetch(imageUrl);
+            if (response.ok) {
+                // Put the fetched image into the cache
+                await cache.put(imageUrl, response.clone());
+                return imageUrl;
+            } else {
+                console.error('Image failed to load:', response.status);
+                throw new Error('Image failed to load');
+            }
+        }
+    };
+
+
+    const renderPage = async (pageNum, imgElement) => {
         const pageIndex = String(pageNum).padStart(3, "0");
-        imgElement.src = `./${mushaf}/tajweed-${pageIndex}.jpg`;
+        const imageUrl = `./${mushaf}/tajweed-${pageIndex}.jpg`;
+
+        try {
+            // Get the image URL from cache or download it
+            const cachedOrDownloadedImageUrl = await getCachedOrDownloadImage(imageUrl);
+            // Set the image source to the URL
+            imgElement.src = cachedOrDownloadedImageUrl;
+        } catch (error) {
+            console.error('Error in rendering page:', error);
+        }
     };
 
     const queueRenderPage = () => {
@@ -22,7 +69,10 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("left-page")?.remove();
             const rightImage = document.getElementById("right-page");
             if (rightPageNum > 0 && rightPageNum <= totalPages) {
-                renderPage(rightPageNum, rightImage);
+                (async() => {
+                    await renderPage(rightPageNum, rightImage);
+                })()
+                
             }
             return;
         }
@@ -36,11 +86,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const rightImage = document.getElementById("right-page");
 
         if (leftPageNum > 0 && leftPageNum <= totalPages) {
-            renderPage(leftPageNum, leftImage);
+            (async() => {
+                await renderPage(leftPageNum, leftImage);
+            })()
         }
 
         if (rightPageNum > 0 && rightPageNum <= totalPages) {
-            renderPage(rightPageNum, rightImage);
+            (async() => {
+                await renderPage(rightPageNum, rightImage);
+            })()
         }
     };
 

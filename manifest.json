@@ -1,0 +1,35 @@
+{
+  "name": "Tajweed Quran",
+  "short_name": "Tajweed Quran",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#576574",
+  "theme_color": "#222f3e",
+  "icons": [
+    {
+      "src": "/assets/images/icon-128x128.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icon-256x256.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
