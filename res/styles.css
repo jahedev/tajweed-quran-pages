@@ -6,8 +6,14 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f0f0f0;
-  overflow: hidden; /* Ensure no scrolling */
+  background-color: #576574;
+  /* Ensure no scrolling */
+  overflow: hidden; 
+}
+
+div, img, button, input, select {
+  margin:0;
+  padding:0;
 }
 
 .image-reader {
@@ -16,7 +22,7 @@ body, html {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 
@@ -30,28 +36,63 @@ body, html {
   box-sizing: border-box;
 }
 
+
+
 .page-image {
-  margin: 10px;
-  border: 1px solid #000;
+  margin: 0px;
+  border: 1px solid #afafaf;
   box-sizing: border-box;
-  max-width: 50%;
   max-height: 100%;
-  object-fit: contain;
+  object-fit:contain;
+  /* right: 50%; */
   flex: 1;
 }
 
 #left-page {
   object-position: right;
+  max-width: 50%;
 }
 
-#right-page {
+#right-page { 
  object-position: left;
+ max-width: 98%;
+}
+
+#left-page + #right-page { /* mushaf double page view */
+ max-width: 50%;
+ object-fit:contain;
+}
+
+button#next-page {
+  flex: 1;
+}
+
+button#prev-page {
+  flex: 1;
+}
+
+button#nav-button {
+  text-align: center;
+  min-width: 50px;
+}
+
+select#surah-select {
+  width: 100%;
+  flex: 2;
+}
+
+input#page-number {
+  text-align: center;
+  font-weight: 800;
+  padding: 0;
+  max-width: 60px;
+  flex: 1;
 }
 
 .controls {
   width: 100%;
   display: flex;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   margin: 0;
@@ -62,7 +103,94 @@ button {
   padding: 15px 0;
   font-size: 16px;
   cursor: pointer;
-  border: none;
-  background-color: #333;
-  color: #fff;
+  border-radius: 2px;
+  background-color: #245287;
+  color: #e6e6e6;
+  font-weight: 900;
+}
+
+button, input, select {
+  border:#222f3e 1px solid;
+  border-radius: 0;
+}
+
+input, select {
+  background-color: #343537;
+  color: #e6e6e6;
+}
+
+input:focus, select:focus {
+  background-color: #515256;
+}
+
+/* Default styles */
+.nav-button {
+  font-size: 16px;
+}
+
+.hidden {
+  width:0;
+  height:0;
+  visibility: hidden;
+}
+
+/* Styles for screen width less than 500px */
+@media (max-width: 600px) {
+  #next-page::before {
+    content: "<<";
+  }
+  
+  #next-page::after {
+    content: "";
+  }
+  
+  #next-page {
+    font-size: 0; /* Hide the original text */
+  }
+  
+  #next-page::before {
+    font-size: 16px; /* Show the replacement text */
+  }
+
+  #prev-page::before {
+    content: ">>";
+  }
+  
+  #prev-page::after {
+    content: "";
+  }
+  
+  #prev-page {
+    font-size: 0; /* Hide the original text */
+  }
+  
+  #prev-page::before {
+    font-size: 16px; /* Show the replacement text */
+  }
+
+  
+
+  #single-page::before {
+    content: "||";
+  }
+  
+  #single-page::after {
+    content: "";
+  }
+  
+  #single-page {
+    font-size: 0; /* Hide the original text */
+  }
+  
+  #single-page::before {
+    font-size: 16px; /* Show the replacement text */
+  }
+}
+
+
+/* Styles when viewport width is greater than its height */
+@media (min-aspect-ratio: 0.70/1) {
+  #right-page {
+    max-width:min-content;
+  }
 }
