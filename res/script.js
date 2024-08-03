@@ -9,7 +9,7 @@ let rightPageNum = 1;
 const totalPages = 604;
 
 const singlePage = document.getElementById("single-page");
-const surahSelect = document.getElementById("surah-select");
+const surahSelect = document.getElementById('surah-select')
 const pageNumber = document.getElementById("page-number");
 
 function renderPage(pageNum, imgElement) {
@@ -117,8 +117,14 @@ function toggleSinglePage(event) {
       leftPageNum--;
     }
   }
-
   queueRenderPage();
+}
+
+function surahSelectListener() {
+  var selectedOption = this.options[this.selectedIndex];
+  var pageNumberValue = selectedOption.getAttribute('data-page-number');
+  pageNumber.value = pageNumberValue;
+  pageNumber.dispatchEvent(new Event("change"))
 }
 
 document.getElementById("prev-page").addEventListener("click", onPrevPage);
@@ -127,7 +133,10 @@ pageNumber.addEventListener("change", pageChanged);
 pageNumber.addEventListener("keydown", hideKeyboard);
 pageNumber.addEventListener(`focus`, handleInputFocus);
 pageNumber.addEventListener("touchend", handleInputFocus, { passive: false });
+
+
 singlePage.addEventListener("click", toggleSinglePage);
+surahSelect.addEventListener("change", surahSelectListener);
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowLeft") {
