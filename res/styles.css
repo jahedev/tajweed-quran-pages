@@ -40,7 +40,6 @@ div, img, button, input, select {
 
 .page-image {
   margin: 0px;
-  border: 1px solid #afafaf;
   box-sizing: border-box;
   max-height: 100%;
   object-fit:contain;
@@ -51,15 +50,17 @@ div, img, button, input, select {
 #left-page {
   object-position: right;
   max-width: 50%;
+  border: 1px solid #2d3436;
 }
 
 #right-page { 
- object-position: left;
  max-width: 98%;
 }
 
 #left-page + #right-page { /* mushaf double page view */
+ object-position: left;
  max-width: 50%;
+ border: 1px solid #afafaf;
  object-fit:contain;
 }
 
