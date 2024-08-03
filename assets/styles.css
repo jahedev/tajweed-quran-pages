@@ -11,8 +11,8 @@ body, html {
 }
 
 div, img, button, input, select {
-  margin: 0;
-  padding: 0;
+  margin:0;
+  padding:0;
 }
 
 .image-reader {
@@ -35,10 +35,13 @@ div, img, button, input, select {
   box-sizing: border-box;
 }
 
+
+
 .page-image {
+  margin: 0px;
   box-sizing: border-box;
   max-height: 100%;
-  object-fit: contain;
+  object-fit:contain;
   flex: 1;
 }
 
@@ -49,13 +52,40 @@ div, img, button, input, select {
 }
 
 #right-page { 
-  max-width: 98%;
+ max-width: 98%;
 }
 
-#left-page + #right-page {
-  object-position: left;
-  max-width: 50%;
-  border: 1px solid #afafaf;
+#left-page + #right-page { /* mushaf double page view */
+ object-position: left;
+ max-width: 50%;
+ border: 1px solid #afafaf;
+ object-fit:contain;
+}
+
+button#next-page {
+  flex: 1;
+}
+
+button#prev-page {
+  flex: 1;
+}
+
+button#nav-button {
+  text-align: center;
+  min-width: 50px;
+}
+
+select#surah-select {
+  width: 100%;
+  flex: 2;
+}
+
+input#page-number {
+  text-align: center;
+  font-weight: 800;
+  padding: 0;
+  max-width: 60px;
+  flex: 1;
 }
 
 .controls {
@@ -64,51 +94,123 @@ div, img, button, input, select {
   position: fixed;
   bottom: 0;
   left: 0;
+  margin: 0;
 }
 
-button, input, select {
+button {
   flex: 1;
   padding: 15px 0;
   font-size: 16px;
   cursor: pointer;
-  border: 1px solid #222f3e;
-  border-radius: 0;
+  border-radius: 2px;
   background-color: #245287;
   color: #e6e6e6;
   font-weight: 900;
 }
 
+button, input, select {
+  border:#222f3e 1px solid;
+  border-radius: 0;
+}
+
 input, select {
   background-color: #343537;
+  color: #e6e6e6;
 }
 
 input:focus, select:focus {
   background-color: #515256;
 }
 
-@media (max-width: 600px) {
+/* Default styles */
+.nav-button {
+  font-size: 16px;
+}
+
+.hidden {
+  width:0;
+  height:0;
+  visibility: hidden;
+}
+
+/* responsive sizes for .controls elements */
+@media (max-width: 700px) {
+  select#surah-select {
+    flex: 3;
+  }
+
   #next-page::before {
-      content: "<<";
-      font-size: 16px;
+    content: "⬅";
+  }
+  
+  #next-page::after {
+    content: "";
+  }
+  
+  #next-page {
+    font-size: 0;
+  }
+  
+  #next-page::before {
+    font-size: 16px;
   }
 
   #prev-page::before {
-      content: ">>";
-      font-size: 16px;
+    content: "➡";
   }
+  
+  #prev-page::after {
+    content: "";
+  }
+  
+  #prev-page {
+    font-size: 0;
+  }
+  
+  #prev-page::before {
+    font-size: 16px;
+  }
+
+  
 
   #single-page::before {
-      content: "||";
-      font-size: 16px;
+    content: "📄";
+  }
+  
+  #single-page::after {
+    content: "";
+  }
+  
+  #single-page {
+    font-size: 0;
+  }
+  
+  #single-page::before {
+    font-size: 16px;
   }
 
-  .nav-button {
-      font-size: 0;
+
+  #full-screen::before {
+    content: "⛶";
+  }
+  
+  #full-screen::after {
+    content: "";
+  }
+  
+  #full-screen {
+    font-size: 0;
+  }
+  
+  #full-screen::before {
+    font-size: 16px;
   }
 }
 
+
+/* Styles when viewport width is greater than its height */
 @media (min-aspect-ratio: 0.70/1) {
   #right-page {
-      max-width: min-content;
+    max-width:min-content;
   }
 }

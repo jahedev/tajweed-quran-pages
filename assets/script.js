@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const totalPages = 604;
 
     const singlePage = document.getElementById("single-page");
+    const fullScreen = document.getElementById("full-screen");
     const surahSelect = document.getElementById('surah-select');
     const pageNumber = document.getElementById("page-number");
 
@@ -159,12 +160,25 @@ document.addEventListener("DOMContentLoaded", () => {
         queueRenderPage();
     };
 
+
     const surahSelectListener = () => {
         const selectedOption = surahSelect.options[surahSelect.selectedIndex];
         const pageNumberValue = selectedOption.getAttribute('data-page-number');
         pageNumber.value = pageNumberValue;
         pageNumber.dispatchEvent(new Event("change"));
     };
+
+    const toggleFullScreen = () => {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(err => {
+                console.log(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+            });
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+        }
+    }
 
     document.getElementById("prev-page").addEventListener("click", onPrevPage);
     document.getElementById("next-page").addEventListener("click", onNextPage);
@@ -173,6 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
     pageNumber.addEventListener("focus", handleInputFocus);
     pageNumber.addEventListener("touchend", handleInputFocus, { passive: false });
     singlePage.addEventListener("click", toggleSinglePage);
+    fullScreen.addEventListener("click", toggleFullScreen);
     surahSelect.addEventListener("change", surahSelectListener);
 
     document.addEventListener("keydown", (event) => {
